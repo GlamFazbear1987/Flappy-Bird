@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnPipes", 2.0f, 3.0f);
+        InvokeRepeating("SpawnPipes", 1.0f, 1.5f);
     }
 
     // Update is called once per frame
@@ -24,4 +24,5 @@ public class SpawnManager : MonoBehaviour
     {
         Instantiate(pipePrefab, new Vector2(20.5f, Random.Range(minimumHeight, maximumHeight)), Quaternion.identity);
     }
+
 }
