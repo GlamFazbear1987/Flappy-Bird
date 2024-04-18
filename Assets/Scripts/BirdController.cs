@@ -7,6 +7,9 @@ public class BirdController : MonoBehaviour
 {
     Rigidbody2D bird;
 
+    // True OR False value to check if bird is alive or not
+    public bool isAlive;
+
     int score = 0;
 
     public Text scoreUI;
@@ -14,14 +17,16 @@ public class BirdController : MonoBehaviour
     void Start()
     {
         bird = GetComponent<Rigidbody2D>();
+        // Set the alive to true
+        isAlive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && isAlive)
         {
-            	bird.AddForce(new Vector2(0,1) * 200);
+            	bird.AddForce(new Vector2(0,1) * 250);
         }
     }
 
@@ -34,5 +39,11 @@ public class BirdController : MonoBehaviour
 
             scoreUI.text = score.ToString();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //set alive to false on Collision
+        isAlive = false;
     }
 }
